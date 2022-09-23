@@ -60,11 +60,38 @@ class BST {
 
     return false;
   }
+
+  breadthSearch() {
+    // performs a breadth first search
+    //               10
+    //         5            13
+    //      2    7      11     16
+
+    // queue: []
+    // visited: [10, 5, 13]
+    const queue = [];
+    const data = [];
+    let node = this.root;
+
+    queue.push(node);
+
+    while (queue.length) {
+      node = queue.shift();
+      data.push(node.val);
+
+      if (node.left) queue.push(node.left);
+      if (node.right) queue.push(node.right);
+    }
+
+    return data;
+  }
 }
 
 const tree = new BST();
 tree.insert(10);
-tree.insert(14);
-tree.insert(8);
+tree.insert(6);
 tree.insert(15);
-tree.insert(11);
+tree.insert(3);
+tree.insert(8);
+tree.insert(20);
+console.log(tree.breadthSearch());
