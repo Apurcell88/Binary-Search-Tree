@@ -40,6 +40,26 @@ class BST {
       }
     }
   }
+
+  contains(val) {
+    // check to see if val is in the bst. Returns true if it is, false if it isn't
+
+    let current = this.root;
+    // check if val is the root
+    if (this.root === null) return false;
+
+    while (current) {
+      if (val < current.val) { // less than
+        current = current.left;
+      } else if (val > current.val) { // greater than
+        current = current.right;
+      } else {
+        return true; // val equals so it's true. It's a match
+      }
+    }
+
+    return false;
+  }
 }
 
 const tree = new BST();
@@ -48,5 +68,3 @@ tree.insert(14);
 tree.insert(8);
 tree.insert(15);
 tree.insert(11);
-
-console.log(tree);
